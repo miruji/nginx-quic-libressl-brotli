@@ -1,10 +1,10 @@
 # nginx-quic-libressl-brotli
 
-Скопировано с (nginx-quic-libressl-src)[https://aur.archlinux.org/packages/nginx-quic-libressl-src] и изменено с последних версий на 1.27.2, поскольку brotli версия требует её.
+Скопировано с [nginx-quic-libressl-src](https://aur.archlinux.org/packages/nginx-quic-libressl-src) и изменено с последних версий на 1.27.2, поскольку brotli версия требует её.
 
 Для установки brotli `paru -S nginx-mainline-mod-brotli`
 
-Документация по (brotli)[https://github.com/google/ngx_brotli]
+Документация по [brotli](https://github.com/google/ngx_brotli)
 
 После установки используем `mkdir /etc/nginx/modules/` и далее `sudo cp /usr/lib/nginx/modules/ngx_http_brotli_* /etc/nginx/modules/`
 
