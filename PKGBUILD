@@ -134,7 +134,7 @@ build() {
   make
 }
 
-package_nginx-quic-libressl() {
+package_nginx-quic-libressl-brotli() {
   cd nginx
   make DESTDIR="$pkgdir" install
 
@@ -174,7 +174,7 @@ package_nginx-quic-libressl() {
 
 }
 
-package_nginx-quic-libressl-src() {
+package_nginx-quic-libressl-brotli-src() {
   pkgdesc="Source code of nginx-quic $pkgver, useful for building modules"
   arch=('any')
   provides=('nginx-src' 'nginx-mainline-src')
