@@ -16,8 +16,7 @@ load_module modules/ngx_http_brotli_filter_module.so;
 load_module modules/ngx_http_brotli_static_module.so;
 ```
 
-Далее в http прописываем включение
-
+Далее в http прописываем включение:
 ```
 brotli on;
 brotli_comp_level 6;
@@ -31,4 +30,30 @@ gzip on;
 gzip_comp_level 6;
 ```
 
-Таким образом он будет работать только на необходимые типы данных
+Таким образом он будет работать только на необходимые типы данных;
+
+Но ещё лучше использовать zstd, пишем `paru -S nginx-mainline-mod-zstd`. После чего `sudo cp /usr/lib/nginx/modules/ngx_http_zstd_* /etc/nginx/modules/`. Дальше в nginx.conf:
+```
+load_module modules/ngx_http_zstd_filter_module.so;
+load_module modules/ngx_http_zstd_static_module.so;
+```
+А также в http:
+```
+# Используем только brotli + zstd
+gzip off;
+
+brotli on;
+brotli_comp_level 4;
+brotli_static on;
+brotli_types application/javascript application/json application/x-javascript
+             text/css text/javascript text/plain text/xml image/svg+xml;
+
+zstd on;
+zstd_min_length 256; # no less than 256 bytes
+zstd_comp_level 3;   # set the level to 3
+zstd_types application/vnd.api+json application/vnd.ms-fontobject
+           application/x-font-opentype application/x-font-truetype
+           application/x-font-ttf application/xhtml+xml application/xml
+           font/eot font/opentype font/otf font/truetype
+           image/vnd.microsoft.icon image/x-icon image/x-win-bitmap;
+```
