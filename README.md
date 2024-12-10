@@ -32,7 +32,7 @@ gzip_comp_level 6;
 
 Таким образом он будет работать только на необходимые типы данных;
 
-Но ещё лучше использовать zstd, пишем `paru -S nginx-mainline-mod-zstd`. После чего `sudo cp /usr/lib/nginx/modules/ngx_http_zstd_* /etc/nginx/modules/`. Дальше в nginx.conf:
+Но ещё лучше использовать [zstd](https://nginx-extras.getpagespeed.com/modules/zstd/); пишем `paru -S nginx-mainline-mod-zstd`. После чего `sudo cp /usr/lib/nginx/modules/ngx_http_zstd_* /etc/nginx/modules/`. Дальше в nginx.conf:
 ```
 load_module modules/ngx_http_zstd_filter_module.so;
 load_module modules/ngx_http_zstd_static_module.so;
